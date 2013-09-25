@@ -11,6 +11,7 @@ might be untidy.
 4. multiple types of observational unit are stored in the same table
 5. a single observational unit is stored in multiple tables
 
+I try to detect all of these, in order because that's easiest.
 
 ## References
 
