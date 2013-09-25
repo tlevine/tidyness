@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 import random
+import urllib
 
 import pandas
 
@@ -15,3 +16,5 @@ sample = df[['portal', 'id']].ix[random.sample(range(df.shape[0]), n)]
 web = strings(sample, 'https://%s/d/%s')
 csv = strings(sample, 'https://%s/api/views/%s/rows.csv?accessType=DOWNLOAD')
 
+for url, id in zip(csv, sample['id']):
+    urlretrieve(url, filename = os.path.join('data', id))
