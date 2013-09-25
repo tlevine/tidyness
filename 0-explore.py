@@ -1,11 +1,12 @@
 #!/usr/bin/env python2
-import random
+import os
 import urllib
+import random
 
 import pandas
 
 def strings(sample, template):
-    urls = [template % (portal, id) for portal, id in zip(sample['portal'], sample['id'])]
+    return [template % (portal, id) for portal, id in zip(sample['portal'], sample['id'])]
 
 n = 100 # sample size
 random.seed(9884892)
@@ -17,4 +18,4 @@ web = strings(sample, 'https://%s/d/%s')
 csv = strings(sample, 'https://%s/api/views/%s/rows.csv?accessType=DOWNLOAD')
 
 for url, id in zip(csv, sample['id']):
-    urlretrieve(url, filename = os.path.join('data', id))
+    urllib.urlretrieve(url, filename = os.path.join('data', id))
